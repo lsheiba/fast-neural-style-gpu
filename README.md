@@ -1,1 +1,1 @@
-# fast-neural-style
+# fast-neural-style-gpu

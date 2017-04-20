@@ -1,9 +1,9 @@
-name: fast-neural-style
-home: https://github.com/lsheiba/fast-neural-style.git
+name: fast-neural-style-gpu
+home: https://github.com/lsheiba/fast-neural-style-gpu.git
 version: 1.0.0
 description: Tensorflow + Jupiter no authentication
 sources:
-  - https://github.com/lsheiba/fast-neural-style.git
+  - https://github.com/lsheiba/fast-neural-style-gpu.git
 maintainers:
   - name: Leonard Sheiba
 keywords:

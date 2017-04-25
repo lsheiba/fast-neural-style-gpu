@@ -39,7 +39,7 @@ spec:
           mountPath: "/notebooks/{{ .Chart.Name }}"
         - mountPath: /usr/local/nvidia/bin
           name: bin
-        - mountPath: /usr/local/nvidia
+        - mountPath: /usr/lib/nvidia
           name: lib
         - mountPath: /usr/lib/cuda
           name: libcuda

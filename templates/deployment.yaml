@@ -43,13 +43,13 @@ spec:
         - mountPath: /usr/lib/nvidia
           name: lib
       volumes:
-        - name: notebooks
-          {{- if .Values.persistence.enabled }}
-          persistentVolumeClaim:
-            claimName: "{{ printf "%s-%s" .Release.Name .Chart.Name | trunc 24 }}"
-          {{- else }}
-          emptyDir: {}
-          {{- end }}
+      - name: notebooks
+        {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: "{{ printf "%s-%s" .Release.Name .Chart.Name | trunc 24 }}"
+        {{- else }}
+        emptyDir: {}
+        {{- end }}
       - hostPath:
           path: /usr/lib/nvidia-367/bin
         name: bin

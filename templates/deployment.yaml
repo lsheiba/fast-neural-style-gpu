@@ -42,6 +42,8 @@ spec:
           name: bin
         - mountPath: /usr/lib/nvidia
           name: lib
+        - mountPath: /usr/local/cuda/extras/CUPTI/lib64
+          name: capti
       volumes:
       - name: notebooks
         {{- if .Values.persistence.enabled }}
@@ -56,3 +58,6 @@ spec:
       - hostPath: 
           path: /var/lib/nvidia-docker/volumes/nvidia_driver/375.39/lib64
         name: lib
+      - hostPath:
+          path: /usr/local/cuda/extras/CUPTI/lib64
+        name: capti

@@ -38,9 +38,9 @@ spec:
         volumeMounts:
         - name: notebooks
           mountPath: "/notebooks/{{ .Chart.Name }}"
-        - mountPath: /var/lib/nvidia-docker/volumes/nvidia_driver/375.39/bin
+        - mountPath: /usr/local/nvidia/bin
           name: bin
-        - mountPath: /var/lib/nvidia-docker/volumes/nvidia_driver/375.39/lib
+        - mountPath: /usr/lib/nvidia
           name: lib
       volumes:
       - name: notebooks
@@ -51,8 +51,8 @@ spec:
         emptyDir: {}
         {{- end }}
       - hostPath:
-          path: /usr/lib/nvidia-367/bin
+          path: /var/lib/nvidia-docker/volumes/nvidia_driver/375.39/bin
         name: bin
       - hostPath: 
-          path: /usr/lib/nvidia-367
+          path: /var/lib/nvidia-docker/volumes/nvidia_driver/375.39/lib64
         name: lib

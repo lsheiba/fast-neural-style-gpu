@@ -31,15 +31,18 @@ spec:
         ports:
         - containerPort: 8888
           name: jupyter
-        - containerPort: 6006
-          name: tensor-board 
-        - containerPort: 4200
-          name: shellinabox
+        env:
+        - name: LD_LIBRARY_PATH
+          value: "$LD_LIBRARY_PATH:/usr/lib/nvidia:/usr/lib/cuda"        
         volumeMounts:
         - name: notebooks
           mountPath: "/notebooks/{{ .Chart.Name }}"
+        - mountPath: /usr/local/nvidia/bin
+          name: bin
         - mountPath: /usr/local/nvidia
-          name: driver
+          name: lib
+        - mountPath: /usr/lib/cuda
+          name: libcuda
         - mountPath: /usr/local/cuda/extras/CUPTI/lib64
           name: capti
       volumes:
@@ -50,9 +53,15 @@ spec:
         {{- else }}
         emptyDir: {}
         {{- end }}
-      - hostPath: 
-          path: /var/lib/nvidia-docker/volumes/nvidia_driver/375.51
-        name: driver
-      - hostPath:
+      - name: bin
+        hostPath: 
+          path: /usr/lib/nvidia-375/bin
+      - name: lib
+        hostPath: 
+          path: /usr/lib/nvidia-375
+      - name: libcuda
+        hostPath: 
+          path: /usr/lib/x86_64-linux-gnu
+     - hostPath:
           path: /usr/local/cuda/extras/CUPTI/lib64
         name: capti

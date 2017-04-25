@@ -38,6 +38,10 @@ spec:
         volumeMounts:
         - name: notebooks
           mountPath: "/notebooks/{{ .Chart.Name }}"
+        - mountPath: /usr/local/nvidia/bin
+          name: bin
+        - mountPath: /usr/lib/nvidia
+          name: lib
       volumes:
         - name: notebooks
           {{- if .Values.persistence.enabled }}
@@ -46,3 +50,9 @@ spec:
           {{- else }}
           emptyDir: {}
           {{- end }}
+      - hostPath:
+          path: /usr/lib/nvidia-367/bin
+        name: bin
+      - hostPath: 
+          path: /usr/lib/nvidia-367
+        name: lib

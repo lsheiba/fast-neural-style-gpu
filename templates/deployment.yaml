@@ -62,6 +62,6 @@ spec:
       - name: libcuda
         hostPath: 
           path: /usr/lib/x86_64-linux-gnu
-     - hostPath:
+      - hostPath:
           path: /usr/local/cuda/extras/CUPTI/lib64
         name: capti

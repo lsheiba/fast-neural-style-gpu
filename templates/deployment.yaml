@@ -23,6 +23,7 @@ spec:
           requests:
             cpu: "{{ .Values.cpu.requests }}"
             memory: "{{ .Values.memory.requests }}"
+            alpha.kubernetes.io/nvidia-gpu: 1
           limits:
             cpu: "{{ .Values.cpu.limits }}"
             memory: "{{ .Values.memory.limits }}"
